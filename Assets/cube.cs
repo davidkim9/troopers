@@ -32,18 +32,23 @@ public class cube : MonoBehaviour {
             moveVector = moveVector.normalized * movespeed * Time.deltaTime;
 
             transform.position = transform.position + moveVector;
-            Vector3 cameraMoveVector = new Vector3(moveVector.x, moveVector.z, 0);
-            Camera.main.gameObject.transform.Translate(cameraMoveVector);
         }
 
         // Rotation
         Vector3 mousePos = Input.mousePosition;
         mousePos.z = 10f;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
-        
-        
-        float angle = Mathf.Atan2(mousePos.x - transform.position.x, mousePos.z - transform.position.z) * Mathf.Rad2Deg;
+
+        float radian = Mathf.Atan2(mousePos.x - transform.position.x, mousePos.z - transform.position.z);
+        float angle = radian * Mathf.Rad2Deg;
         Vector3 rotationVector = new Vector3(0, angle, 0);
         transform.rotation = Quaternion.Euler(rotationVector);
+
+        // Camera Shit
+        float cameraRadius = 3;
+        Vector3 cameraOffset = new Vector3(Mathf.Sin(radian) * cameraRadius, 0, Mathf.Cos(radian) * cameraRadius);
+        Vector3 cameraMoveVector = new Vector3(transform.position.x, 10, transform.position.z);
+        cameraMoveVector += cameraOffset;
+        Camera.main.gameObject.transform.position = cameraMoveVector;
     }
 }
