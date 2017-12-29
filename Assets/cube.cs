@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class cube : MonoBehaviour {
+    [Range(1.0f, 10.0f)]
     public float movespeed = 5;
 
 	// Use this for initialization
