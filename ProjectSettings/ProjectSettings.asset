@@ -634,9 +634,9 @@ PlayerSettings:
     UNet: 1
   facebookSdkVersion: 7.9.4
   apiCompatibilityLevel: 2
-  cloudProjectId: a908b1ac-6bd4-4587-83b9-bc70bf0ebd78
+  cloudProjectId: b77469a2-7417-468d-b30a-df8c5ec5e8e7
   projectName: troopers
-  organizationId: davidkim9
+  organizationId: gyuhankim
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0
   disableOldInputManagerSupport: 0
