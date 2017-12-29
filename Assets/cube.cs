@@ -49,7 +49,7 @@ public class cube : MonoBehaviour {
         // Camera Shit
         float cameraRadius = Mathf.Min(3, relativeMousePos.magnitude * 0.5f);
         Vector3 cameraOffset = new Vector3(Mathf.Sin(radian) * cameraRadius, 0, Mathf.Cos(radian) * cameraRadius);
-        Vector3 cameraMoveVector = new Vector3(transform.position.x, 10, transform.position.z);
+        Vector3 cameraMoveVector = new Vector3(transform.position.x, transform.position.y + 10, transform.position.z);
         cameraMoveVector += cameraOffset;
         Camera.main.gameObject.transform.position = cameraMoveVector; 
     }
