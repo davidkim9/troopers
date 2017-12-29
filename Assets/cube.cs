@@ -40,14 +40,13 @@ public class cube : MonoBehaviour {
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         Vector3 relativeMousePos = mousePos - transform.position;
         relativeMousePos.y = 0;
-        print(relativeMousePos + "");
         float radian = Mathf.Atan2(relativeMousePos.x, relativeMousePos.z);
         float angle = radian * Mathf.Rad2Deg;
         Vector3 rotationVector = new Vector3(0, angle, 0);
         transform.rotation = Quaternion.Euler(rotationVector);
 
         // Camera Shit
-        float cameraRadius = Mathf.Min(3, relativeMousePos.magnitude);
+        float cameraRadius = Mathf.Min(3, relativeMousePos.magnitude * 0.5f);
         Vector3 cameraOffset = new Vector3(Mathf.Sin(radian) * cameraRadius, 0, Mathf.Cos(radian) * cameraRadius);
         Vector3 cameraMoveVector = new Vector3(transform.position.x, 10, transform.position.z);
         cameraMoveVector += cameraOffset;
