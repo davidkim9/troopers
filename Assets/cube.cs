@@ -7,7 +7,7 @@ public class cube : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        print("test");
+        print(Camera.main.gameObject.transform.position);
 	}
 
     // Update is called once per frame
@@ -27,11 +27,23 @@ public class cube : MonoBehaviour {
         if (Input.GetKey(KeyCode.LeftArrow))
             //move left
             xInput -= 1;
-
         if (xInput != 0 || yInput != 0) {
             Vector3 moveVector = new Vector3(xInput, 0, yInput);
             moveVector = moveVector.normalized * movespeed * Time.deltaTime;
-            transform.Translate(moveVector);
+
+            transform.position = transform.position + moveVector;
+            Vector3 cameraMoveVector = new Vector3(moveVector.x, moveVector.z, 0);
+            Camera.main.gameObject.transform.Translate(cameraMoveVector);
         }
-	}
+
+        // Rotation
+        Vector3 mousePos = Input.mousePosition;
+        mousePos.z = 10f;
+        mousePos = Camera.main.ScreenToWorldPoint(mousePos);
+        
+        
+        float angle = Mathf.Atan2(mousePos.x - transform.position.x, mousePos.z - transform.position.z) * Mathf.Rad2Deg;
+        Vector3 rotationVector = new Vector3(0, angle, 0);
+        transform.rotation = Quaternion.Euler(rotationVector);
+    }
 }
