@@ -16,16 +16,16 @@ public class cube : MonoBehaviour {
         float xInput = 0; // Input.GetAxis("Horizontal");
         float yInput = 0; // Input.GetAxis("Vertical");
 
-        if (Input.GetKey(KeyCode.UpArrow))
+        if (Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             //move up
             yInput += 1;
-        if (Input.GetKey(KeyCode.DownArrow))
+        if (Input.GetKey(KeyCode.DownArrow) || Input.GetKey(KeyCode.S))
             //move down
             yInput -= 1;
-        if (Input.GetKey(KeyCode.RightArrow))
+        if (Input.GetKey(KeyCode.RightArrow) || Input.GetKey(KeyCode.D))
             //move right
             xInput += 1;
-        if (Input.GetKey(KeyCode.LeftArrow))
+        if (Input.GetKey(KeyCode.LeftArrow) || Input.GetKey(KeyCode.A))
             //move left
             xInput -= 1;
         if (xInput != 0 || yInput != 0) {
